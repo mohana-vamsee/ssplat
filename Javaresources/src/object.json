@@ -1,0 +1,10 @@
+ObjectMapper mapper = new ObjectMapper();
+TypeReference<List<author>> mapType = new TypeReference<List<author>>() {};
+InputStream is = TypeReference.class.getResourceAsStream("");
+try {
+	List<author> authorList = mapper.readValue(is, mapType);
+	authorRepository.save(authorList);
+	System.out.println("Authors list saved successfully");
+} catch (IOException e) {
+	System.out.println(e.getMessage());
+}
